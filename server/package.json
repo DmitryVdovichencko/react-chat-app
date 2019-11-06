@@ -1,0 +1,48 @@
+{
+  "name": "chat-server",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node"
+  },
+  "version": "1.0.0",
+  "description": "Chat server",
+  "main": "index.js",
+  "author": "DmitryVdovichenko",
+  "license": "MIT",
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "yarn rimraf && mkdir dist && NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build",
+    "rimraf": "rimraf dist",
+    "clean": "rm -rf build && mkdir build",
+    "prettier": "prettier --write src/*.js",
+    "lint": "eslint [src]",
+    "start": "yarn build && node dist/index.js",
+    "start:dev": "nodemon dist/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "express-validator": "^6.2.0",
+    "helmet": "^3.21.2",
+    "rimraf": "^3.0.0",
+    "ws": "^7.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "prettier": "1.18.2"
+  }
+}
