@@ -4,16 +4,24 @@ import handleNewMessage from '../sagas'
 import reducers from '../reducers'
 import setupSocket from '../sockets'
 import { createLogger } from 'redux-logger'
-import { createBrowserHistory } from 'history'
-import { connectRouter } from 'connected-react-router'
+
+import { connectRouter, routerMiddleware } from 'connected-react-router'
+
+import { createBrowserHistory } from 'history' 
+
 const history = createBrowserHistory()
+
 const logger = createLogger();
+
+
 let username='User'
 const sagaMiddleware = createSagaMiddleware()
+
+
 const store = createStore(
     
-    reducers,
-    applyMiddleware(sagaMiddleware,logger)
+    connectRouter(history)(reducers),
+    applyMiddleware(routerMiddleware(history),sagaMiddleware,logger)
     )
 const socket = setupSocket(store.dispatch, username)
 

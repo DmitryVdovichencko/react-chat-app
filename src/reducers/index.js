@@ -1,12 +1,15 @@
 import { combineReducers } from "redux"
 import messages from "./messages"
 import users from "./users"
-
-
-const chat = combineReducers({
+import {connectRouter} from 'connected-react-router';
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
+const rootReducer = combineReducers({
     messages,
-    users
+    users,
+    router:connectRouter(history)
+   
     
 })
+export default  rootReducer
 
-export default chat
