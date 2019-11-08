@@ -1,22 +1,12 @@
-import React,{Component} from 'react';
+import React from 'react';
+import Chat from './components/Chat'
 import './App.css';
-import {SideBar} from './containers/SideBar'
-import {MessagesList} from './containers/MessagesList'
-import {AddMessage}  from './containers/AddMessage'
-class App extends Component {
-  render(){
-    return (
-      <div className="App" id="container">
-        <SideBar />
-        <section id="main">
-            <MessagesList />
-            <AddMessage />
-        </section>
-        
-      </div>
-    );
-  }
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-}
 
+
+const App = () => (
+  <Chat />
+
+);
 export default App;

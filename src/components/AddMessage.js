@@ -7,7 +7,7 @@ const AddMessage = (props) => {
     return(
         <section id="new-message">
         <div className="message">
-        <label for="message" className="message__label" >Enter your message</label>
+        <label htmlFor="message" className="message__label" >Enter your message</label>
            <input
            className="message__field" 
            id="message"
