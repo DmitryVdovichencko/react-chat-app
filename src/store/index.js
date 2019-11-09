@@ -14,7 +14,7 @@ const history = createBrowserHistory()
 const logger = createLogger();
 
 
-let username='User'
+
 const sagaMiddleware = createSagaMiddleware()
 
 
@@ -23,6 +23,8 @@ const store = createStore(
     connectRouter(history)(reducers),
     applyMiddleware(routerMiddleware(history),sagaMiddleware,logger)
     )
+   
+const username = 'User'
 const socket = setupSocket(store.dispatch, username)
 
 sagaMiddleware.run(handleNewMessage,{socket,username})

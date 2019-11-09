@@ -7,5 +7,7 @@ const handleNewMessage = function* handleNewMessage(params) {
         action.author = params.username
         params.socket.send(JSON.stringify(action))
     })
+
 }
+
 export default handleNewMessage

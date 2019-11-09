@@ -13,6 +13,7 @@ const AddMessage = (props) => {
            id="message"
             onKeyPress={(e) => {
                 if (e.key === 'Enter'){
+                    
                     props.dispatch(input.value, 'Me')
                     input.value = ''
                 }
