@@ -5,6 +5,8 @@ import { addUser } from '../actions'
 const mapDispatchToProps = dispatch => ({
     dispatch : (name) => {
         dispatch(addUser(name))
+        
+      
       
    
 

@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 const App = () => (
   <BrowserRouter >
     <Switch>
-      <Route exact path="/" component={Chat} />
+      <Route exact path="/" component={SignIn} />
       <Route exact path="/chat" component={Chat} />
       <Route exact path="/signIn" component={SignIn} />
       <Route path='*' render={() => (<h1>PAGE NOT FOUND</h1>)}/>

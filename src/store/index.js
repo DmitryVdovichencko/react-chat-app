@@ -24,10 +24,13 @@ const store = createStore(
     applyMiddleware(routerMiddleware(history),sagaMiddleware,logger)
     )
    
-const username = 'User'
-const socket = setupSocket(store.dispatch, username)
+// const username = 'User'
+// const socket = setupSocket(store.dispatch, username)
 
-sagaMiddleware.run(handleNewMessage,{socket,username})
+// sagaMiddleware.run(handleNewMessage,{socket,username})
 
 
-export default store
+export {history}
+export {store}
+export {sagaMiddleware}
+
