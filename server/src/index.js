@@ -23,18 +23,7 @@ wss.on('connection', (ws)=>{
         index = users.length
         users.push({name: data.name, id: index+1})
         console.log(`hi user ${data.name}`)
-        if (messages.length>1){
-          console.log(messages[messages.length-1])
-          messages.forEach(m=>{
-            const {message, author}=m
-            ws.send(JSON.stringify({
-              type:'ADD_MESSAGE',
-              message,
-              author
-            }))
-          })
 
-        }
         ws.send(JSON.stringify({
           type:'ADD_MESSAGE',
           message:`hello ${data.name}`,
@@ -50,14 +39,30 @@ wss.on('connection', (ws)=>{
           type:'USERS_LIST',
           users
         }, ws)
-  
+        if (messages.length>0){
+          console.log(messages[messages.length-1])
+          messages.forEach(m=>{
+            const {message, author}=m
+            if (author!==data.author){
+            ws.send(JSON.stringify({
+              type:'ADD_MESSAGE',
+              message,
+              author
+            }))
+          }
+        
+
+            })
+
+
+        }  
 
         break
       }
       case 'ADD_MESSAGE':
         messages.push({ message:data.message,
           author: data.author})
-          
+
     
         broadcast({
           type:'ADD_MESSAGE',
